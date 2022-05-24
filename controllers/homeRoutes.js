@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
-        const postData = await Project.findAll({
+        const postData = await Post.findAll({
             include: [
                 {
                     model: User,
@@ -27,10 +27,27 @@ router.get('/', async (req, res) => {
 
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect the request to another route
-    if (req.session.logged_in) {
-      res.redirect('/posts');
-      return;
-    }
+    // if (req.session.logged_in) {
+    //   res.redirect('/posts');
+    //   return;
+    // }
   
     res.render('login');
-  });
+});
+
+router.get('/signup', (req, res) => {
+    // If the user is already logged in, redirect the request to another route
+    // if (req.session.logged_in) {
+    //   res.redirect('/posts');
+    //   return;
+    // }
+  
+    res.render('signup');
+});
+
+router.get('/posts', (req, res) => {
+  
+    res.render('posts');
+});
+
+module.exports = router;

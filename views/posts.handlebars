@@ -1,3 +1,14 @@
 <div>
     {{!-- Code to show all posts from db --}}
+{{#if posts.length}}
+<section>
+  <h2>Your Posts</h2>
+    {{#each posts as |post|}}
+      {{> post-info post}}
+    {{/each}}
+
+</section>
+{{/if}}
 </div>
+
+{{!-- <button type="submit" class="btn"><a class="link" href="./addpost">+ New Post</a></button> --}}
